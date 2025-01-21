@@ -6,7 +6,7 @@ const Navbar = () => {
     <header className="min-w-[1000px]">
       <div className="flex bg-amazonclone text-white h-[60px] hover:cursor-pointer">
         {/* Left */}
-        <div className="flex items-center m-4">
+        {/* <div className="flex items-center m-4">
           <img
             className="h-[35px] w-[100px] m-3"
             src={"../images/amazon.png"}
@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="text-xs xl:text-sm">Delivering to</div>
             <div className="text-sm xl:text-base font-bold">United Kingdom</div>
           </div>
-        </div>
+        </div> */}
         {/* Middle */}
         <div className="flex grow relative items-center">
           <Search />
