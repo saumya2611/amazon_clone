@@ -39,7 +39,21 @@ const Search = () => {
           <MagnifyingGlassIcon className="h-[27px] m-auto stroke-slate-900" />
         </button>
       </div>
-      {suggestion && <div></div>}
+      {suggestion && (
+        <div className="bg-white text-black w-full z-40 absolute">
+          {suggestion
+            .filter((suggestion) => {
+              const currentSearchTerm = searchterm.toLocaleLowerCase();
+              const title = suggestion.title.toLocaleLowerCase();
+              return (
+                currentSearchTerm &&
+                title.startsWith(currentSearchTerm) &&
+                title !== currentSearchTerm
+              );
+            })
+            .slice(0, 10)}
+        </div>
+      )}
     </div>
   );
 };
