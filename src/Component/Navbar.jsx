@@ -1,5 +1,6 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -7,10 +8,12 @@ const Navbar = () => {
       <div className="flex bg-amazonclone text-white h-[60px] hover:cursor-pointer">
         {/* Left */}
         <div className="flex items-center m-4">
-          <img
-            className="h-[35px] w-[100px] m-3"
-            src={"../images/amazon.png"}
-          />
+          <Link to={"/"}>
+            <img
+              className="h-[35px] w-[100px] m-3"
+              src={"../images/amazon.png"}
+            />
+          </Link>
           <span className="mb-2 -ml-[.7rem] pr-0.5">.in</span>
 
           <div className="px-4 ml-2 border border-amazonclone transition-all  delay-150  hover:border hover:border-white hover:rounded-sm">
@@ -34,10 +37,13 @@ const Navbar = () => {
             <div className="text-xs xl:text-sm">Returns</div>
             <div className="text-sm xl:text-base font-bold">& orders</div>
           </div>
-          <div className="flex pr-3 pl-3 border border-amazonclone transition-all  delay-150 hover:border hover:border-white hover:rounded-sm">
-            <ShoppingCartIcon className="h-[48px]" />
-            <div className="mt-7 text-xs xl:text-sm font-bold">Cart</div>
-          </div>
+          <Link to={"/checkout"}>
+            <div className="flex pr-3 pl-3 border border-amazonclone transition-all  delay-150 hover:border hover:border-white hover:rounded-sm">
+              <ShoppingCartIcon className="h-[48px]" />
+
+              <div className="mt-7 text-xs xl:text-sm font-bold">Cart</div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="flex bg-amazonclonelightblue text-white space-x-3 text-xs xl:text-sm p-2 pl-6">

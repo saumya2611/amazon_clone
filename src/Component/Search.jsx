@@ -1,6 +1,21 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
+import { callApi } from "../Utils/CallApi";
 
 const Search = () => {
+  const [suggestion, setSuggestion] = useState(null);
+  const [searchterm, setSearchTerm] = useState("");
+
+  const getSuggestions = () => {
+    callApi(`data/suggestions.json`).then((suggestionsResults) => {
+      setSuggestion(suggestionsResults);
+    });
+  };
+
+  useEffect(() => {
+    getSuggestions();
+  }, []);
+
   return (
     <div className="w-[100%]">
       <div className="flex items-center h-10 bg-searchclone border-2 border-white rounded  hover:border-orange-400">
@@ -17,11 +32,14 @@ const Search = () => {
           type="text"
           placeholder="Search Amazon.in"
           className="grow flex items-center h-[100%] text-black px-3 focus:outline-none"
+          value={searchterm}
+          onChange={(ev) => setSearchTerm(ev.target.value)}
         />
         <button className="w-[45px]">
           <MagnifyingGlassIcon className="h-[27px] m-auto stroke-slate-900" />
         </button>
       </div>
+      {suggestion && <div></div>}
     </div>
   );
 };
