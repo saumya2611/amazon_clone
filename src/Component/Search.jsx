@@ -59,3 +59,9 @@ const Search = () => {
 };
 
 export default Search;
+
+const a = [1, 2, 3, 4, 5, 6, 7, 8];
+
+a.filter((item) => {
+  return item;
+}).slice(0, 10);
