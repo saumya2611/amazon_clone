@@ -32,9 +32,9 @@ const SearchResult = () => {
     });
   };
 
-  //   useEffect(() => {
-  //     getSearchResults();
-  //   }, [searchParams]);
+  useEffect(() => {
+    getSearchResults();
+  }, [searchParams]);
 
   return (
     <div className="min-w-[1200px] max-w-[1300px] m-auto">
