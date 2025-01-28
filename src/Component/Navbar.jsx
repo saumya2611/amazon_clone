@@ -1,8 +1,16 @@
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 import Search from "./Search";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const cart = useSelector((state) => {
+    console.log("state========>", state);
+
+    return state.cart.productNumber;
+  });
+  console.log("cart======>", cart);
+
   return (
     <header className="min-w-[1000px]">
       <div className="flex bg-amazonclone text-white h-[60px] hover:cursor-pointer">
@@ -40,6 +48,11 @@ const Navbar = () => {
           <Link to={"/checkout"}>
             <div className="flex pr-3 pl-3 border border-amazonclone transition-all  delay-150 hover:border hover:border-white hover:rounded-sm">
               <ShoppingCartIcon className="h-[48px]" />
+              <div className="relative">
+                <div className="absolute right-[9px] font-bold m-2 text-orange-400">
+                  {cart}
+                </div>
+              </div>
 
               <div className="mt-7 text-xs xl:text-sm font-bold">Cart</div>
             </div>

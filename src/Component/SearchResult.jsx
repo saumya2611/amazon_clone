@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { callApi } from "../Utils/CallApi";
+import ProducDetails from "./ProducDetails";
+import { GB_CURRENCY } from "../Utils/constant";
+
+// import callApi from "../Utils/CallApi";
+// import GB_CURRENCY from "../Utils/constant";
 
 const SearchResult = () => {
   const [searchParams] = useSearchParams();
@@ -37,15 +42,25 @@ const SearchResult = () => {
   }, [searchParams]);
 
   return (
-    <div className="min-w-[1200px] max-w-[1300px] m-auto">
+    <div className="min-w-[1200px] max-w-[1300px] m-auto pt-4">
       {product &&
         product.map((item, key) => {
           return (
-            <div key={key}>
-              <p>{item.title}</p>
-              {/* <p>{item.brand}</p>
-              <img src={item.image} alt={item.image} /> */}
-            </div>
+            <Link key={key} to={`/product/${item.id}`}>
+              <div className="h-[250px]  grid grid-cols-12 rounded mt-1 ">
+                <div className="col-span-2 p-4 bg-gray-200">
+                  <img className="m-autos" src={item.image_small} />
+                </div>
+                <div className="col-span-10 bg-gray-50 border-gray-100 hover:bg-gray-100">
+                  <div className="font-medium text-black p-2">
+                    <ProducDetails product={item} ratings={true} />
+                    <div className="text-xl xl:text-2xl pt-1">
+                      {GB_CURRENCY.format(item.price)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
           );
         })}
     </div>
