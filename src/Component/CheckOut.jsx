@@ -97,9 +97,9 @@ const CheckOut = () => {
                 );
               })
             ) : (
-              <div className="flex items-center justify-center bg-gray-50">
-                <img src="./images/cartEmpty.png" />
-              </div>
+              // <div className="flex items-center justify-center bg-gray-50">
+              //   <img src="./images/cartEmpty.png" />
+              // </div>
             )}
 
             {itemsNumber ? (
